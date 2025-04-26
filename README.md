@@ -43,7 +43,7 @@ const fr: LangDict = {
 const dict = { en, fr };
 ```
 
-### 2. Detect browser locale
+### 2. Detect browser locale (optional)
 
 ```ts
 import { getBrowserLocale } from "donkey-i18n";
@@ -79,68 +79,12 @@ console.log(t("settings.title")); // → "Welcome to Settings"
 
 ## API Reference
 
-### `getBrowserLocale({ dictionary, fallbackLocale })`
-
-Auto-detects the best locale based on the browser.
-
-**Parameters**:
-
-- `dictionary` (_object_) — your whole locale dictionary
-- `fallbackLocale` (_string_) — used if no match in `navigator.languages`
-
-**Returns**:
-
-- the best matching locale key, or the fallback
-
-### `createTranslationFunction({ dictionary, locale })`
-
-Creates a translation function for a specific locale.
-
-**Parameters**:
-
-- `dictionary` (_object_) — your full locale dictionary
-- `locale` (_string_) — the key of the current language (e.g., `"en"`, `"fr"`)
-
-**Returns**:
-
-- `{ t }` — where `t(path)` gives you the translated string
-
-**Example**:
-
-`const { t } = createTranslationFunction({ dictionary, locale: "en" });`
-
-### `useTranslator({ dictionary, locale })`
-
-React hook version of `createTranslationFunction`, memoized for performance.
-
-**Parameters**:
-
-- `dictionary` (_object_) — your full locale dictionary
-- `locale` (_string_) — the key of the current language
-
-**Returns**:
-
-- `{ t }` — where `t(path)` gives you the translated string
-
-**Example**:
-`const { t } = useTranslator({ dictionary, locale: "en" });`
-
-### `getTranslationFromDict(dict, path)`
-
-Mostly for internal use, but may be useful. Lower-level helper for manually fetching translations by path.
-
-**Parameters**:
-
-- `dict` (_object_) — translations for a specific locale (e.g., `dict.en`)
-- `path` (_string_) — like `"login"` or `"settings.description"`
-
-**Returns**:
-
-- the translated string
-
-**Notes**:
-
-- Throws an error if the path doesn't exist.
+| Function                                                | Description                                                                                                                                           | Parameters                                                                                                                               | Returns                                                                                                             |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **`getBrowserLocale({ dictionary, fallbackLocale })`**  | Auto-detects the best locale based on the browser.                                                                                                    | - `dictionary` (object): your whole locale dictionary<br>- `fallbackLocale` (string): used if no match in `navigator.languages`          | The best matching locale key, or the fallback.                                                                      |
+| **`createTranslationFunction({ dictionary, locale })`** | Creates a translation function for a specific locale.                                                                                                 | - `dictionary` (object): your full locale dictionary<br>- `locale` (string): the current language key (e.g., `"en"`, `"fr"`)             | `{ t }`, a type-safe wrapper around `getTranslationFromDict` for the given language. Example: `t("settings.title")` |
+| **`useTranslator({ dictionary, locale })`**             | React hook version of `createTranslationFunction`, memoized for performance.                                                                          | - `dictionary` (object): your full locale dictionary<br>- `locale` (string): the current language key                                    | `{ t }`, a type-safe wrapper around `getTranslationFromDict` for the given language. Example: `t("settings.title")` |
+| **`getTranslationFromDict(dict, path)`**                | Lower-level helper for manually fetching translations by path. Throws an error if the path doesn't exist. Mostly for internal use, but may be useful. | - `dict` (object): translations for a specific locale (e.g., `dict.en`)<br>- `path` (string): like `"login"` or `"settings.description"` | The translated string. Throws an error if the path doesn't exist                                                    |
 
 ## Contributing
 
