@@ -1,31 +1,33 @@
 {
-	"name": "donkey-i18n",
-	"version": "1.0.0",
-	"description": "A typesafe, dead-simple, easily swappable i18n library for prototyping in typescript.",
-	"keywords": [
-		"typescript",
-		"i18n"
-	],
-	"homepage": "https://github.com/matthewyingtao/donkey-i18n",
-	"bugs": {
-		"url": "https://github.com/matthewyingtao/donkey-i18n/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/matthewyingtao/donkey-i18n.git"
-	},
-	"license": "MIT",
-	"author": "Matthew Tao <matthew.yingtao@gmail.com> (matthewtao.com)",
-	"type": "module",
-	"files": [
-		"dist"
-	],
-	"scripts": {
-		"build": "tsc",
-		"ci": "pnpm run build"
-	},
-	"devDependencies": {
-		"typescript": "^5.8.3"
-	},
-	"packageManager": "pnpm@10.9.0"
+    "name": "donkey-i18n",
+    "version": "1.0.0",
+    "description": "A typesafe, dead-simple, easily swappable i18n library for prototyping in typescript.",
+    "keywords": [
+        "typescript",
+        "i18n"
+    ],
+    "homepage": "https://github.com/matthewyingtao/donkey-i18n",
+    "bugs": {
+        "url": "https://github.com/matthewyingtao/donkey-i18n/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/matthewyingtao/donkey-i18n.git"
+    },
+    "license": "MIT",
+    "author": "Matthew Tao <matthew.yingtao@gmail.com> (matthewtao.com)",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "format": "prettier --write .",
+        "ci": "pnpm run build"
+    },
+    "devDependencies": {
+        "prettier": "^3.5.3",
+        "typescript": "^5.8.3"
+    },
+    "packageManager": "pnpm@10.9.0"
 }
