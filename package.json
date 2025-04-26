@@ -34,5 +34,9 @@
         "prettier": "^3.5.3",
         "typescript": "^5.8.3"
     },
-    "packageManager": "pnpm@10.9.0"
+    "packageManager": "pnpm@10.9.0",
+    "dependencies": {
+        "@types/react": "^19.1.2",
+        "react": "^19.1.0"
+    }
 }

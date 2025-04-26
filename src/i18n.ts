@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 // { "settings" : { title: "", description: "" }, "login": "" }
 // "settings.title", "settings.description", "login"
 type TranslationStrings<T, Prefix extends string = ""> = {
@@ -28,7 +30,7 @@ export function getTranslationFromDict<
     return current as any;
 }
 
-export function useTranslator<
+export function createTranslationFunction<
     T extends Record<string, any>,
     K extends keyof any,
 >({ dictionary, locale }: { dictionary: Record<K, T>; locale: K }) {
@@ -58,4 +60,15 @@ export function getBrowserLocale<
     }
 
     return finalLocale;
+}
+
+export function useTranslator<
+    T extends Record<string, any>,
+    K extends keyof any,
+>({ dictionary, locale }: { dictionary: Record<K, T>; locale: K }) {
+    const { t } = useMemo(() => {
+        return createTranslationFunction({ dictionary, locale });
+    }, [dictionary, locale]);
+
+    return { t };
 }
