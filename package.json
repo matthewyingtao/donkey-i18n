@@ -10,18 +10,21 @@
 	"bugs": {
 		"url": "https://github.com/matthewyingtao/donkey-i18n/issues"
 	},
-	"author": "Matthew Tao <matthew.yingtao@gmail.com> (matthewtao.com)",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/matthewyingtao/donkey-i18n.git"
 	},
 	"license": "MIT",
+	"author": "Matthew Tao <matthew.yingtao@gmail.com> (matthewtao.com)",
+	"type": "module",
 	"files": [
 		"dist"
 	],
-	"type": "module",
-	"packageManager": "pnpm@10.9.0",
+	"scripts": {
+		"build": "tsc"
+	},
 	"devDependencies": {
 		"typescript": "^5.8.3"
-	}
+	},
+	"packageManager": "pnpm@10.9.0"
 }
