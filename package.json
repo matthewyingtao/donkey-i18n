@@ -21,7 +21,8 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsc"
+		"build": "tsc",
+		"ci": "pnpm run build"
 	},
 	"devDependencies": {
 		"typescript": "^5.8.3"
