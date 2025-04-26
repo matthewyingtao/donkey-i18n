@@ -11,7 +11,9 @@ A tiny and thoroughly type-safe internationalization helper for TypeScript and i
 
 ## Installation
 
-`npm install donkey-i18n`
+```
+npm install donkey-i18n
+```
 
 ## Usage
 
