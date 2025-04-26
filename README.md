@@ -54,6 +54,7 @@ const locale = getBrowserLocale({
 });
 
 // If `navigator.languages` includes "fr", you get "fr", otherwise "en".
+// On the server, it will return the fallback as browser APIs won't be available
 ```
 
 ### 3. Create a translator
