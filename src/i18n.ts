@@ -1,52 +1,60 @@
-type LeafPaths<T> = T extends object
-    ? {
-        [K in keyof T]: `${Exclude<K, symbol>}${LeafPaths<T[K]> extends never
-        ? ""
-        : `.${LeafPaths<T[K]>}`}`;
-    }[keyof T]
-    : never;
+// { "settings" : { title: "", description: "" }, "login": "" }
+// "settings.title", "settings.description", "login"
+type TranslationStrings<T, Prefix extends string = ""> = {
+    [K in keyof T]: T[K] extends string
+        ? `${Prefix}${K & string}`
+        : T[K] extends Record<string, string>
+          ?
+                | `${Prefix}${K & string}`
+                | TranslationStrings<T[K], `${Prefix}${K & string}.`>
+          : never;
+}[keyof T];
 
-export function getTranslationFromDict<T extends object, K extends LeafPaths<T>>(
-    dictionary: T,
-    path: K,
-): K extends keyof T ? T[K] : string {
-    const keys = path.split(".");
-    let current: any = dictionary;
+export function getTranslationFromDict<
+    T extends Record<string, any>,
+    K extends TranslationStrings<T>,
+>(dict: T, path: K): string {
+    const keys = (path as string).split(".");
+    let current: any = dict;
 
     for (const key of keys) {
-        if (current[key] === undefined) {
-            return undefined as any;
-        }
+        if (current[key] === undefined)
+            throw new Error(`Path "${path}" not found in dictionary.`);
         current = current[key];
     }
 
     return current as any;
 }
 
-export function useTranslator<Dict extends Record<string, any>>({
-    dictionary,
-    locale
-}: {
-    dictionary: Dict;
-    locale: keyof Dict;
-}) {
-    const translate = (key: LeafPaths<typeof dictionary[typeof locale]>) =>
-        getTranslationFromDict(dictionary[locale], key);
+export function useTranslator<
+    T extends Record<string, any>,
+    K extends keyof any,
+>({ dictionary, locale }: { dictionary: Record<K, T>; locale: K }) {
+    function t<Path extends TranslationStrings<T>>(path: Path): string {
+        const dict = dictionary[locale];
+        return getTranslationFromDict(dict, path);
+    }
 
-    return { t: translate };
-};
+    return { t };
+}
 
-export function getDefaultLocale<Dict extends Record<string, any>>({ defaultLocale = "en", dictionary }: { defaultLocale?: keyof Dict; dictionary: Dict }) {
+export function getBrowserLocale<
+    T extends Record<string, any>,
+    K extends keyof T & string,
+>({ dictionary, fallbackLocale }: { dictionary: T; fallbackLocale: K }): K {
+    let finalLocale: K = fallbackLocale;
+
     if (typeof navigator !== "undefined") {
         let languages = navigator.languages;
-        if (!navigator.languages) languages = [navigator.language];
+        if (!languages) languages = [navigator.language];
 
         for (let language of languages) {
-            if (Object.keys(dictionary).includes(language)) {
-                defaultLocale = language as "en" | "jp";
+            if (language in dictionary) {
+                finalLocale = language as K;
                 break;
             }
         }
     }
-    return defaultLocale;
+
+    return finalLocale;
 }

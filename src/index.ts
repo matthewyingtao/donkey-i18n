@@ -1,1 +1,5 @@
-export { getTranslationFromDict, useTranslator } from "./i18n.js";
+export {
+    getBrowserLocale,
+    getTranslationFromDict,
+    useTranslator,
+} from "./i18n.js";
