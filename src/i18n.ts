@@ -35,3 +35,18 @@ export function useTranslator<Dict extends Record<string, any>>({
 
     return { t: translate };
 };
+
+export function getDefaultLocale<Dict extends Record<string, any>>({ defaultLocale = "en", dictionary }: { defaultLocale?: keyof Dict; dictionary: Dict }) {
+    if (typeof navigator !== "undefined") {
+        let languages = navigator.languages;
+        if (!navigator.languages) languages = [navigator.language];
+
+        for (let language of languages) {
+            if (Object.keys(dictionary).includes(language)) {
+                defaultLocale = language as "en" | "jp";
+                break;
+            }
+        }
+    }
+    return defaultLocale;
+}
