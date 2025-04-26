@@ -2,8 +2,6 @@
 
 A tiny and thoroughly type-safe internationalization helper for TypeScript and includes a React-specific hook. It's designed to be a quick way to add i18n support to your prototypes or small projects, and is meant to be easily replaced if you outgrow it.
 
----
-
 ## Features
 
 - **Type-safe keys**: Get auto-complete and catch typos in your code
