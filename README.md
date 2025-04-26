@@ -106,7 +106,8 @@ Creates a translation function for a specific locale.
 - `{ t }` — where `t(path)` gives you the translated string
 
 **Example**:
-`t("settings.title") // => "Welcome to Settings"`
+
+`const { t } = createTranslationFunction({ dictionary, locale: "en" });`
 
 ### `useTranslator({ dictionary, locale })`
 
@@ -141,10 +142,10 @@ Mostly for internal use, but may be useful. Lower-level helper for manually fetc
 
 - Throws an error if the path doesn't exist.
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests, issues, and ⭐️ are all welcome!
 
-## 📜 License
+## License
 
 MIT © Matthew Tao
