@@ -47,8 +47,7 @@ export function getBrowserLocale<
     let finalLocale: K = fallbackLocale;
 
     if (typeof navigator !== "undefined") {
-        let languages = navigator.languages;
-        if (!languages) languages = [navigator.language];
+        let languages = navigator.languages ?? [navigator.language];
 
         for (let language of languages) {
             if (language in dictionary) {
