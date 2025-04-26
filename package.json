@@ -19,5 +19,9 @@
 	"files": [
 		"dist"
 	],
-	"type": "module"
+	"type": "module",
+	"packageManager": "pnpm@10.9.0",
+	"devDependencies": {
+		"typescript": "^5.8.3"
+	}
 }
