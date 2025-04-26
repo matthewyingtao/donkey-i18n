@@ -27,17 +27,21 @@
         "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
         "check-format": "prettier --check .",
         "ci": "pnpm build && pnpm check-format && pnpm check-exports",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "test": "vitest run"
     },
     "devDependencies": {
         "@arethetypeswrong/cli": "^0.17.4",
+        "@types/react": "^19.1.2",
+        "jsdom": "^26.1.0",
+        "jsdom-global": "^3.0.2",
         "prettier": "^3.5.3",
         "typescript": "^5.8.3",
-        "vitest": "^3.1.2",
-        "@types/react": "^19.1.2"
+        "vitest": "^3.1.2"
     },
     "packageManager": "pnpm@10.9.0",
     "dependencies": {
+        "@testing-library/react": "^16.3.0",
         "react": "^19.1.0"
     }
 }
