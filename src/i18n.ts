@@ -19,7 +19,9 @@ export function getTranslationFromDict<
 
     for (const key of keys) {
         if (current[key] === undefined)
-            throw new Error(`Path "${path}" not found in dictionary.`);
+            throw new Error(
+                `Key "${key}" not found while resolving path "${path}".`,
+            );
         current = current[key];
     }
 
