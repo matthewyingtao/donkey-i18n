@@ -85,11 +85,3 @@ console.log(t("settings.title")); // → "Welcome to Settings"
 | **`createTranslationFunction({ dictionary, locale })`** | Creates a translation function for a specific locale.                                                      | - `dictionary` (object): your full locale dictionary<br>- `locale` (string): the current language key (e.g., `"en"`, `"fr"`)             | `{ t }`, a type-safe wrapper around `getTranslationFromDict` for the given language. Example: `t("settings.title")` |
 | **`useTranslator({ dictionary, locale })`**             | React hook version of `createTranslationFunction`, memoized for performance.                               | - `dictionary` (object): your full locale dictionary<br>- `locale` (string): the current language key                                    | `{ t }`, a type-safe wrapper around `getTranslationFromDict` for the given language. Example: `t("settings.title")` |
 | **`getTranslationFromDict(dict, path)`**                | Lower-level helper for manually fetching translations by path. Mostly for internal use, but may be useful. | - `dict` (object): translations for a specific locale (e.g., `dict.en`)<br>- `path` (string): like `"login"` or `"settings.description"` | The translated string. Throws an error if the path doesn't exist                                                    |
-
-## Contributing
-
-Pull requests, issues, and ⭐️ are all welcome!
-
-## License
-
-MIT © Matthew Tao
