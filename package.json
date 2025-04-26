@@ -32,7 +32,7 @@
         "prepublishOnly": "npm run ci",
         "test": "vitest run"
     },
-    "dependencies": {
+    "peerDependencies": {
         "react": "^19.1.0"
     },
     "devDependencies": {
