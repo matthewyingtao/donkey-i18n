@@ -1,10 +1,11 @@
 {
     "name": "donkey-i18n",
     "version": "1.0.0",
-    "description": "A typesafe, dead-simple, easily swappable i18n library for prototyping in typescript.",
+    "description": "A typesafe, dead-simple, easily swappable i18n library for prototyping in React.",
     "keywords": [
         "typescript",
-        "i18n"
+        "i18n",
+        "react"
     ],
     "homepage": "https://github.com/matthewyingtao/donkey-i18n",
     "bugs": {
