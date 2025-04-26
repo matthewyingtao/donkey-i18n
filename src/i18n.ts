@@ -1,7 +1,7 @@
 // { "settings" : { title: "", description: "" }, "login": "" }
 // "settings.title", "settings.description", "login"
 type TranslationStrings<T, Prefix extends string = ""> = {
-    [K in keyof T]: T[K] extends string
+    [K in keyof T]: T[K] extends string | number
         ? `${Prefix}${K & string}`
         : T[K] extends Record<string, string>
           ?
