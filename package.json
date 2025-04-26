@@ -17,15 +17,19 @@
     "license": "MIT",
     "author": "Matthew Tao <matthew.yingtao@gmail.com> (matthewtao.com)",
     "type": "module",
+    "main": "dist/index.js",
     "files": [
         "dist"
     ],
     "scripts": {
         "build": "tsc",
-        "format": "prettier --write .",
-        "ci": "pnpm run build"
+        "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+        "check-format": "prettier --check .",
+        "ci": "pnpm build && pnpm check-format && pnpm check-exports",
+        "format": "prettier --write ."
     },
     "devDependencies": {
+        "@arethetypeswrong/cli": "^0.17.4",
         "prettier": "^3.5.3",
         "typescript": "^5.8.3"
     },
