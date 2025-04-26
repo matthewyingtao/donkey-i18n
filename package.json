@@ -1,7 +1,7 @@
 {
     "name": "donkey-i18n",
     "version": "1.0.1",
-    "description": "A typesafe, dead-simple, easily swappable i18n library for prototyping in Typescript, with support for React.",
+    "description": "A tiny and thoroughly type-safe internationalization helper for TypeScript, with support for React.",
     "keywords": [
         "typescript",
         "i18n",
