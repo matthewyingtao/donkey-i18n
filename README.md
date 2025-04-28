@@ -71,7 +71,7 @@ const { t } = createTranslationFunction({
 import { useTranslator } from "donkey-i18n";
 
 function MyComponent() {
-    const { t } = useTranslator({ dictionary: dict, "en" });
+    const { t } = useTranslator({ dictionary: dict, locale: "en" });
 }
 
 console.log(t("login")); // → "Login"
